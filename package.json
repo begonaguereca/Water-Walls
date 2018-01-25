@@ -1,0 +1,22 @@
+{
+  "name": "hacktivator",
+  "version": "1.0.0",
+  "description": "variation of water walls toy problem",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chadam189/Water-Walls.git"
+  },
+  "author": "Adam Miller",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chadam189/Water-Walls/issues"
+  },
+  "homepage": "https://github.com/chadam189/Water-Walls#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
