@@ -34,6 +34,7 @@ const getLargestTrappedWater = (walls) => {
   console.log(JSON.stringify(trappedWater));
 
   // return findBiggestWaterTrap(trappedWater);
+  return trappedWater;
 };
 
 const updatePotentialWater = (currentWallHeight, currentWallIndex, largestWallHeight, potentialWater) => {
