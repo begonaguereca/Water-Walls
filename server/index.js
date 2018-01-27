@@ -14,9 +14,11 @@ app.get('/', (req, res) => {
 	res.sendStatus(200);
 });
 
-app.post('/', (req, res) => {
+app.post('/walls', (req, res) => {
 	const walls = req.body.walls;
+	// console.log(`this was received at post route: ${JSON.stringify(walls)}`);
 	const result = getLargestTrappedWater(walls);
+	// console.log(`this is being sent as the response: ${JSON.stringify(result)}`);
 	res.json(result);
 });
 
