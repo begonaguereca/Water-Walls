@@ -1,7 +1,5 @@
 const getWaterFromWalls = () => {
 
-	clearGrid();
-
   // 5, 3, 7, 2, 6, 4, 5, 9, 1, 2
   // 5,4,5,6,1,8,5,4,7,1,1,1,1,1,1,1,15
   const walls = document.getElementsByClassName('walls')[0].value.split(',').map(elem => parseInt(elem));
@@ -20,8 +18,9 @@ const getWaterFromWalls = () => {
   fetch(url, options)
     .then(res => res.json())
     .then((response) => {
-    	console.log(`data has been parsed: ${response}`);
+    	removeClass('cell');
     	fillGrid(walls, response.water, response.maxWalls);
+    	updateMaxWaterInfo(response.water, response.maxWalls);
     })
     .catch(error => console.log(`Error: ${error}`));
 
@@ -68,11 +67,24 @@ const fillGrid = (walls, water, maxWalls) => {
 	}
 };
 
-const clearGrid = () => {
-	const cells = document.getElementsByClassName('cell');
-	while(cells[0]) {
-		cells[0].parentNode.removeChild(cells[0]);
+const removeClass = (name) => {
+	const instance = document.getElementsByClassName(name);
+	while(instance[0]) {
+		instance[0].parentNode.removeChild(instance[0]);
 	}
+};
+
+const updateMaxWaterInfo = (water, maxWalls) => {
+	removeClass('results');
+	const summary = document.getElementsByClassName('summary')[0];
+	const results = document.createElement('p');
+
+	const totalWater = water.reduce((sum, elem) => sum += elem);
+
+	let summaryString = `Total water trapped: ${totalWater} blocks\nLargest section: ${maxWalls[2]} blocks, bettween walls #${maxWalls[0]} and #${maxWalls[1]}`;
+	results.innerText = summaryString;
+  results.classList.add('results');
+	summary.appendChild(results);
 };
 
 
