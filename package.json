@@ -2,9 +2,10 @@
   "name": "hacktivator",
   "version": "1.0.0",
   "description": "variation of water walls toy problem",
-  "main": "index.js",
+  "main": "server/index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "nodemon server/index.js"
   },
   "repository": {
     "type": "git",

@@ -7,7 +7,7 @@ Clone github to your local machine, navigate to the root folder of the directory
 
 ```shell
 npm install
-nodemon server/index.js
+npm start
 ```
 
 ...then go to http://localhost:3000 on your browser.
@@ -34,13 +34,17 @@ Output for the above: [3, 8, 11]...we're using 1 as the first index. This means 
 
 ### Strategy
 
-Phase 1) Iterate through walls, keeping track of largest wall seen so far. For each wall, do three things: 
+#### Phase 1) 
 
-  A) If current wall is larger than largest wall, update largest wall
-  B) Track all of the potentially trapped water that could exist on top of this current wall
-  C) Check if the current wall successfully traps water on top of previously visited walls; if so, convert those "potential" spots of trapped water into actual spots of trapped water.
+Iterate through walls, keeping track of largest wall seen so far. For each wall, do three things: 
 
-Phase 2) At this point, we have an array of all of the positions with trapped water; find the largest amount of water trapped between two walls and return the wall indices (indices should start at 1) and the largest water total.
+A) If current wall is larger than largest wall, update largest wall
+B) Track all of the potentially trapped water that could exist on top of this current wall
+C) Check if the current wall successfully traps water on top of previously visited walls; if so, convert those "potential" spots of trapped water into actual spots of trapped water.
+
+#### Phase 2) 
+
+At this point, we have an array of all of the positions with trapped water; find the largest amount of water trapped between two walls and return the wall indices (indices should start at 1) and the largest water total.
 
 ### Inputs/Outputs
 
@@ -57,11 +61,11 @@ const getLargestTrappedWater = (walls) => {
 
   // for each wall...
     // if current wall greater than largest wall
-      // update largest wall
+    // update largest wall
     // update potential water that could be trapped on top of current wall
-    // updatePotentialWater()
+      // updatePotentialWater()
     // convert ant potential trapped water due to current wall
-    // convertPotentialToTrapped()
+      // convertPotentialToTrapped()
 
   // go over all of the trapped water
     // find largest total water between two walls
