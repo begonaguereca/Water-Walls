@@ -5,6 +5,8 @@ const getWaterFromWalls = () => {
   const data = { walls };
   const url = "http://localhost:3000/walls";
 
+  createGrid(walls);
+
   console.log(`this is about to be sent: ${JSON.stringify(data)}`);
 
   const options = {
@@ -21,3 +23,26 @@ const getWaterFromWalls = () => {
     .catch(error => console.log(`Error: ${error}`));
 
 };
+
+const createGrid = (walls) => {
+	const columns = walls.length;
+	const rows = findMaxElement(walls);
+	const container = document.getElementsByClassName('container')[0];
+
+	for (let i = 0; i < rows; i++) {
+		for (let j = 0; j < columns; j++) {
+			let newCell = document.createElement('div');
+			newCell.classList.add('cell');
+			newCell.style.width = (960/columns) + 'px';
+			newCell.style.height = (960/rows) + 'px';
+			container.appendChild(newCell);
+		}
+	}
+};
+
+const fillGrid = (walls) => {
+	
+}
+
+const findMaxElement = arr => arr.reduce((max, current) => max > current ? max : current);
+
