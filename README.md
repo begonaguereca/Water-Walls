@@ -18,11 +18,11 @@ We are going to represent a series of walls of different integer heights.
 
 For example, given heights of [5, 3, 7, 2, 6, 4, 5, 9, 1, 2], it would look like this:
 
-(https://i.imgur.com/xtN9vVV.png)
+![alt text](https://i.imgur.com/xtN9vVV.png)
 
 Now imagine that it rains.
 
-(https://i.imgur.com/jJkBtUY.png)
+![alt text](https://i.imgur.com/jJkBtUY.png)
 
 Our goal is to determine which two walls have the most water trapped between them, and exactly how much water that is.
 
