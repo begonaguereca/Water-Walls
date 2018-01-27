@@ -4,7 +4,7 @@
   "description": "variation of water walls toy problem",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
     "path": "^0.12.7"
   },
   "devDependencies": {
+    "jest": "^22.1.4",
     "nodemon": "^1.14.11"
   }
 }

@@ -11,9 +11,6 @@ const getLargestTrappedWater = (walls) => {
     updatePotentialWater(currentWall, i, largestWall, potentialWater);
     convertPotentialToTrapped(currentWall, potentialWater, trappedWater);
   }
-  // console.log(JSON.stringify(trappedWater));
-
-  // return findBiggestWaterTrap(trappedWater);
   return trappedWater;
 };
 
@@ -37,47 +34,31 @@ const convertPotentialToTrapped = (currentWall, potentialWater, trappedWater) =>
   }
 };
 
-// const trappedWater = [null,2,null,5,1,3,2,null,1];
-
-// const findBiggestWaterTrap = (trappedWater) => {
-//   let leftWall = 0;
-//   let rightWall = 0;
-//   while(rightWall < trappedWater.length) {
-//     if (trappedWater[rightWall]) {
-      
-//     }
-//   }
-
-// }; 
+// const trappedWater = [null, 2, null, 5, 1, 3, 2, null, 1];
 
 // const walls = [5, 3, 7, 2, 6, 4, 5, 9, 1, 2];
 
-// getLargestTrappedWater(walls);
+const findBiggestWaterTrap = (water) => {
 
-const findBiggestWaterTrap = (water, walls) => {
+  let waterRecord = {left: null, right: null, water: 0};
+  let currentWater = 0;
   
-  let rainRecord = {left: null, right: null, rain: 0};
-  let currentRain = 0;
-  let wallLeft = 1;
-  
-  for (let j = 1; j < water.length; j += 1) {
-    if (water[j]) {
-      currentRain += water[j];
-    } else {
-      if (currentRain > rainRecord.rain) {
-        rainRecord.rain = currentRain;
-        rainRecord.left = wallLeft;
-        rainRecord.right = j + 1;
-        wallLeft = j + 1;
-        currentRain = 0;
-      } else {
-        wallLeft = j + 1;
-        currentRain = 0;
+  for (let firstWall = 0; firstWall < water.length; firstWall++) {
+    if (!water[firstWall]) {
+      let secondWall = firstWall + 1;
+      while (water[secondWall]) {
+        currentWater += water[secondWall++];
       }
+      if (currentWater > waterRecord.water) {
+        waterRecord.left = firstWall;
+        waterRecord.right = secondWall;
+        waterRecord.water = currentWater;
+      }
+      currentWater = 0;
+      firstWall = secondWall - 1;
     }
   }
-  return [rainRecord.left, rainRecord.right, rainRecord.rain]
-
+  return [waterRecord.left + 1, waterRecord.right + 1, waterRecord.water];
 };
 
 module.exports = {
