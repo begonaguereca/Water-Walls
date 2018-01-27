@@ -7,7 +7,6 @@ const app = express();
 const PORT = 3000;
 
 app.use(bodyParser.json());
-
 app.use(express.static(path.join(__dirname, '../client')));
 
 app.get('/', (req, res) => {
@@ -17,11 +16,11 @@ app.get('/', (req, res) => {
 app.post('/walls', (req, res) => {
 	const walls = req.body.walls;
 	let water = getLargestTrappedWater(walls);
+	let maxWalls = findBiggestWaterTrap(water);
 	const result = {
 		water,
-		maxWalls: findBiggestWaterTrap(water)
+		maxWalls
 	}
-	console.log(`this is being sent as the response: ${JSON.stringify(result)}`);
 	res.json(result);
 });
 

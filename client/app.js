@@ -2,20 +2,13 @@ const getWaterFromWalls = () => {
 
 	clearGrid();
 
-  const walls = document.getElementsByClassName('walls')[0].value.split(',').map(elem => parseInt(elem));
-  // const walls = [5, 3, 7, 2, 6, 4, 5, 9, 1, 2];
+  // 5, 3, 7, 2, 6, 4, 5, 9, 1, 2
   // 5,4,5,6,1,8,5,4,7,1,1,1,1,1,1,1,15
+  const walls = document.getElementsByClassName('walls')[0].value.split(',').map(elem => parseInt(elem));
+  createGrid(walls);
+
   const data = { walls };
   const url = "http://localhost:3000/walls";
-
-  const columns = walls.length;
-	const rows = findMaxElement(walls) + 1;
-
-  createGrid(walls);
-  // fillWalls(walls);
-
-  console.log(`this is about to be sent: ${JSON.stringify(data)}`);
-
   const options = {
   	method: 'POST',
   	body: JSON.stringify(data),
@@ -65,41 +58,11 @@ const fillGrid = (walls, water, maxWalls) => {
 
 	for (let i = 0; i < rows; i++) {
 		for (let j = 1; j < columns; j++) {
-			// console.log(`rows - i: ${rows - i}, walls[j-1] + water[j-1]: ${walls[j - 1] + water[j - 1]}`);
 			if ((rows - i <= (walls[j - 1] + water[j - 1])) && (rows - i > walls[j - 1])) {
 				container[(i * columns) + j].style['background'] = 'cyan';
 			} else if (rows - i <= walls[j - 1]) {
 			  let color = (maxWalls[0] === j || maxWalls[1] === j) ? 'black' : 'grey';
 				container[(i * columns) + j].style['background'] = color;
-			}
-		}
-	}
-};
-
-const fillWalls = (walls) => {
-	const columns = walls.length + 1;
-	const rows = findMaxElement(walls);
-	const container = document.getElementsByClassName('cell');
-
-	for (let i = 0; i < rows; i++) {
-		for (let j = 1; j < columns; j++) {
-			if (rows - i <= walls[j - 1]) {
-				container[(i * columns) + j].style['background'] = 'grey';
-			}
-		}
-	}
-};
-
-const fillWater = (walls, water, maxWalls) => {
-	const columns = walls.length + 1;
-	const rows = findMaxElement(walls);
-	const container = document.getElementsByClassName('cell');
-
-	for (let i = 0; i < rows; i++) {
-		for (let j = 1; j < columns; j++) {
-			console.log(`rows - i: ${rows - i}, walls[j-1] + water[j-1]: ${walls[j - 1] + water[j - 1]}`);
-			if ((rows - i <= (walls[j - 1] + water[j - 1])) && (rows - i > walls[j - 1])) {
-				container[(i * columns) + j].style['background'] = 'cyan';
 			}
 		}
 	}

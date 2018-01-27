@@ -1,6 +1,6 @@
 const getLargestTrappedWater = (walls) => {
   let potentialWater = [];
-  let trappedWater = [];
+  let trappedWater = new Array(walls.length).fill(0);
   let largestWall = 0;
 
   for (let i = 0; i < walls.length; i++) {
@@ -28,25 +28,20 @@ const convertPotentialToTrapped = (currentWall, potentialWater, trappedWater) =>
   for (let i = 0; i <= currentWall; i++) {
     while(potentialWater[i].length > 0) {
       let index = potentialWater[i].pop();
-      trappedWater[index] = trappedWater[index] || 0;
       trappedWater[index]++;
     }
   }
 };
 
-// const trappedWater = [null, 2, null, 5, 1, 3, 2, null, 1];
-
-// const walls = [5, 3, 7, 2, 6, 4, 5, 9, 1, 2];
-
 const findBiggestWaterTrap = (water) => {
 
-  let waterRecord = {left: null, right: null, water: 0};
+  let waterRecord = {left: 0, right: 0, water: 0};
   let currentWater = 0;
   
   for (let firstWall = 0; firstWall < water.length; firstWall++) {
     if (!water[firstWall]) {
       let secondWall = firstWall + 1;
-      while (water[secondWall]) {
+      while (water[secondWall] && secondWall < water.length) {
         currentWater += water[secondWall++];
       }
       if (currentWater > waterRecord.water) {
@@ -58,7 +53,8 @@ const findBiggestWaterTrap = (water) => {
       firstWall = secondWall - 1;
     }
   }
-  return [waterRecord.left + 1, waterRecord.right + 1, waterRecord.water];
+
+  return waterRecord.left !== waterRecord.right ? [waterRecord.left + 1, waterRecord.right + 1, waterRecord.water] : [0, 0, 0];
 };
 
 module.exports = {
