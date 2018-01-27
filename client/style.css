@@ -1,10 +1,19 @@
-.container {
-	height: 960px;
-	width: 960px;
+.input {
+/*	display: block;*/
 	position: relative;
-	margin-top: 20px;
+	text-align: center;
+	margin: auto;
+	margin-bottom: 15px;
+
+}
+
+.container {
+	height: 600px;
+	width: 600px;
+	position: relative;
 	font-size: 0;
 	margin: auto;
+	margin-top: 20px;
 	padding: 0;
 	border: none;
 	outline: 3px solid black;
@@ -14,6 +23,9 @@
 	margin: 0;
 	padding: 0;
 	border: none;
-	outline: 1px solid grey;
+	outline: 1px solid black;
 	display: inline-block;
+	font: bold 48px sans-serif;
+	text-align: center;
+	vertical-align: top;
 }

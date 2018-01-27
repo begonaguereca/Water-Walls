@@ -54,8 +54,35 @@ const convertPotentialToTrapped = (currentWall, potentialWater, trappedWater) =>
 
 // getLargestTrappedWater(walls);
 
+const findBiggestWaterTrap = (water, walls) => {
+  
+  let rainRecord = {left: null, right: null, rain: 0};
+  let currentRain = 0;
+  let wallLeft = 1;
+  
+  for (let j = 1; j < water.length; j += 1) {
+    if (water[j]) {
+      currentRain += water[j];
+    } else {
+      if (currentRain > rainRecord.rain) {
+        rainRecord.rain = currentRain;
+        rainRecord.left = wallLeft;
+        rainRecord.right = j + 1;
+        wallLeft = j + 1;
+        currentRain = 0;
+      } else {
+        wallLeft = j + 1;
+        currentRain = 0;
+      }
+    }
+  }
+  return [rainRecord.left, rainRecord.right, rainRecord.rain]
+
+};
+
 module.exports = {
-  getLargestTrappedWater
+  getLargestTrappedWater,
+  findBiggestWaterTrap
 };
 
 
