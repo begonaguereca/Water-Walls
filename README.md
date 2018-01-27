@@ -1,5 +1,5 @@
 # Water-Walls
-Variation on the "water walls" toy problem
+Interactive solution for a variation of the classic "water walls" toy problem
 
 ## Installing / Getting started
 
@@ -10,7 +10,7 @@ npm install
 nodemon server/index.js
 ```
 
-...then go to localhost:3000 on your browser.
+...then go to http://localhost:3000 on your browser.
 
 ## Water Walls Problem Summary: 
 
@@ -18,11 +18,11 @@ We are going to represent a series of walls of different integer heights.
 
 For example, given heights of [5, 3, 7, 2, 6, 4, 5, 9, 1, 2], it would look like this:
 
-![alt text](https://i.imgur.com/xtN9vVV.png)
+![alt text](https://i.imgur.com/xtN9vVV.png/resize=width:200,height:200)
 
 Now imagine that it rains.
 
-![alt text](https://i.imgur.com/jJkBtUY.png)
+![alt text](https://i.imgur.com/jJkBtUY.png/resize=width:200,height:200)
 
 Our goal is to determine which two walls have the most water trapped between them, and exactly how much water that is.
 
@@ -42,7 +42,7 @@ Input: const walls = [5, 3, 7, 2, 6, 4, 5, 9, 1, 2];
 Output: let result = [3, 8, 11]
 Constraints/Edge Cases: none
 
-### Function Sigantures:
+### Function Signatures:
 
 const getLargestTrappedWater = (walls) => {
   let potentialWater = {}
