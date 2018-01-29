@@ -3,7 +3,6 @@ const getWaterFromWalls = () => {
   // 5, 3, 7, 2, 6, 4, 5, 9, 1, 2
   // 5,4,5,6,1,8,5,4,7,1,1,1,1,1,1,1,15
   const walls = document.getElementsByClassName('walls')[0].value.split(',').map(elem => parseInt(elem));
-  createGrid(walls);
 
   const data = { walls };
   const url = "http://localhost:3000/walls";
@@ -19,6 +18,7 @@ const getWaterFromWalls = () => {
     .then(res => res.json())
     .then((response) => {
     	removeClass('cell');
+    	createGrid(walls);
     	fillGrid(walls, response.water, response.maxWalls);
     	updateMaxWaterInfo(response.water, response.maxWalls);
     })
@@ -86,5 +86,3 @@ const updateMaxWaterInfo = (water, maxWalls) => {
   results.classList.add('results');
 	summary.appendChild(results);
 };
-
-

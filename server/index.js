@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const { getLargestTrappedWater, findBiggestWaterTrap } = require('./utils.js');
+const { findWaterBlocks, findBiggestWaterBlock } = require('./utils.js');
 
 const app = express();
 const PORT = 3000;
@@ -15,8 +15,8 @@ app.get('/', (req, res) => {
 
 app.post('/walls', (req, res) => {
 	const walls = req.body.walls;
-	let water = getLargestTrappedWater(walls);
-	let maxWalls = findBiggestWaterTrap(water);
+	let water = findWaterBlocks(walls);
+	let maxWalls = findBiggestWaterBlock(water);
 	const result = {
 		water,
 		maxWalls

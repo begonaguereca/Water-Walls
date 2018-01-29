@@ -4,7 +4,7 @@
   "description": "variation of water walls toy problem",
   "main": "server/index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --watch",
     "start": "nodemon server/index.js"
   },
   "repository": {

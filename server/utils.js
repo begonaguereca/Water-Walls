@@ -1,4 +1,4 @@
-const getLargestTrappedWater = (walls) => {
+const findWaterBlocks = (walls) => {
   let potentialWater = [];
   let trappedWater = new Array(walls.length).fill(0);
   let largestWall = 0;
@@ -33,7 +33,7 @@ const convertPotentialToTrapped = (currentWall, potentialWater, trappedWater) =>
   }
 };
 
-const findBiggestWaterTrap = (water) => {
+const findBiggestWaterBlock = (water) => {
 
   let waterRecord = {left: 0, right: 0, water: 0};
   let currentWater = 0;
@@ -58,8 +58,8 @@ const findBiggestWaterTrap = (water) => {
 };
 
 module.exports = {
-  getLargestTrappedWater,
-  findBiggestWaterTrap
+  findWaterBlocks,
+  findBiggestWaterBlock
 };
 
 
