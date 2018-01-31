@@ -9,10 +9,14 @@ const PORT = 3000;
 const serverID = Math.floor(Math.random() * 10000);
 
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, '../client')));
+app.use(express.static(path.join(__dirname, '../views')));
+
+app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-	res.sendStatus(200);
+	let color = 'SteelBlue';
+
+  res.render('index', {color: color});
 });
 
 app.get('/server', (req, res) => {

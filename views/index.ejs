@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Water Walls</title>
+	<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+	<script src="./app.js"></script>
+  <div class="input">
+  	<p>Input a comma-separated list of positive integers representing wall heights:</p>
+  	<input type="text" placeholder="Ex: 1, 4, 7, 3, 6" class="walls" />
+  	<button type="button" onclick="getWaterFromWalls()">Render water walls</button>
+    <div class="summary">
+    </div>
+  </div>
+  <div id ="color">
+    <%= color %>
+  </div>
+  <div class="container">
+  </div>
+</body>
+  <script>
+    document.body.style.backgroundColor = document.getElementById('color').innerHTML.trim();
+
+  </script>
+</html>
