@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, '../views')));
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-	let color = 'SteelBlue';
+	let color = 'DarkGreen';
   res.render('index', { color, serverID });
 });
 
