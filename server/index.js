@@ -15,12 +15,7 @@ app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
 	let color = 'SteelBlue';
-
-  res.render('index', {color: color});
-});
-
-app.get('/server', (req, res) => {
-	res.send(`Hello! This server\'s ID is: ${serverID}`);
+  res.render('index', { color, serverID });
 });
 
 app.post('/walls', (req, res) => {
